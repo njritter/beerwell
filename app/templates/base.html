@@ -2,8 +2,8 @@
 
 
 {% block title %}
-  {% if title %}<title>{{ title }} - Beerwell</title>
-  {% else %}<title>Beerwell</title>
+  {% if title %}{{ title }} - Beerwell
+  {% else %}Beerwell
   {% endif %}
 {% endblock %}
 
@@ -31,31 +31,3 @@
     </div>
   </nav>
 {% endblock %}
-
-<html>
-  <head>
-    {% if title %}
-    {{ title }} - Beerwell
-    {% else %}
-    Beerwell
-    {% endif %}
-  </head>
-  <body>
-    <div>
-      Beerwell:
-      <a href="/index">Home</a>
-      <a href="/login">Login</a>
-    </div>
-    <hr>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
-    {% block content %}{% endblock %}
-  </body>
-</html>
