@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="container-fluid">
+    <!-- Row -->
+    <div class="row">
+      <div id='graph-0'></div>
+      <footer>
+        <!-- D3.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!-- Plotly.js -->
+        <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script>
+        <script type="text/javascript">
+          var graph = {{myGraphJSON | safe}};
+          Plotly.plot("graph-0", graph.data, graph.layout);
+        </script>
+      </footer>
+    </div>
+    <!-- Row -->
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4" style="background-color:white;">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <h3>{{ current_beer }}</h3>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {% for i,b in beers %}
+            <a class="dropdown-item" href={{ i }}>{{ b }}</a><br>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-md-8 col-lg-8" style="background-color:white;">
+        <!-- Wordcloud -->
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
