@@ -21,10 +21,10 @@
     </div>
     <!-- Row -->
     <div class="row">
-      <div class="col-sm-4 col-md-4 col-lg-4" style="background-color:white;">
+      <div class="col-sm-5 col-md-5 col-lg-5" style="background-color:white;">
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h3>{{ current_beer }}</h3>
+            <h4>{{ current_beer }}</h4>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {% for i,b in beers %}
@@ -32,9 +32,15 @@
             {% endfor %}
           </div>
         </div>
+        <!-- Beer Stats -->
+        <h5>Brewery: {{ beer_stats[0] }}</h5> 
+        <h5>Style: {{ beer_stats[2] }}</h5>
+        <h5>Number of Text Reviews: </h5>
+        <h5>Number of Ratings: </h5>
       </div>
-      <div class="col-sm-8 col-md-8 col-lg-8" style="background-color:white;">
-        <!-- Wordcloud -->
+      <div class="col-sm-7 col-md-7 col-lg-7" style="background-color:white;">
+        <!-- Link to wordcloud -->
+        <img src="{{url_for('static', filename = beer_wordcloud + '.png')}}" class="img-rounded"/>
       </div>
     </div>
   </div>

@@ -70,8 +70,12 @@ def explore(ind=0):
 
     beers = zip(list(range(250)), panda['Name'].tolist())
     current_beer = panda['Name'].tolist()[int(ind)]
+    beer_wordcloud = 'wordclouds/Beer_' + str(ind)
+    beer_stats = panda.iloc[int(ind)].tolist() # row from beerPanda
 
     return render_template('explore.html',
                             myGraphJSON=myGraphJSON,
                             beers=beers,
-                            current_beer=current_beer)
+                            current_beer=current_beer,
+                            beer_stats=beer_stats,
+                            beer_wordcloud=beer_wordcloud)
