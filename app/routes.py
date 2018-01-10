@@ -60,6 +60,15 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+@app.route('/user/<username>')
+def user(username):
+    user = User.query.filter(username=username).first_or_404()
+    posts = [
+        {'author': user, 'body': 'Test 1'},
+        {'author': user, 'body': 'Test 2'}
+    ]
+    return render_template('user.html', user=user, posts=posts)
+
 @app.route('/about/')
 def about():
     return render_template('about.html')
