@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 
 import pandas as pd
@@ -61,8 +61,9 @@ def logout():
     return redirect(url_for('index'))
 
 @app.route('/user/<username>')
+@login_required
 def user(username):
-    user = User.query.filter(username=username).first_or_404()
+    user = User.query.filter_by(username=username).first_or_404()
     posts = [
         {'author': user, 'body': 'Test 1'},
         {'author': user, 'body': 'Test 2'}
@@ -72,6 +73,11 @@ def user(username):
 @app.route('/about/')
 def about():
     return render_template('about.html')
+
+@app.route('/recommendations')
+@login_required
+def recommendations():
+    return render_template('recommendations.html')
 
 @app.route('/explore/')
 @app.route('/explore/<ind>')
