@@ -83,7 +83,7 @@ def recommendations():
 @app.route('/explore/')
 @app.route('/explore/<ind>')
 def explore(ind=0):
-    #panda = pd.read_pickle('/Users/Drazi/beerwell/app/data/beerpanda.pkd')
+    #This tripped me up for a bit ... need absolute paths for Heroku
     basedir = os.path.abspath(os.path.dirname(__file__))
     myPath = os.path.join(basedir, 'static/data/beerpanda.pkd')
     panda = pd.read_pickle(myPath)
@@ -129,9 +129,3 @@ def explore(ind=0):
                             current_beer=current_beer,
                             beer_stats=beer_stats,
                             beer_wordcloud=beer_wordcloud)
-
-
-@app.route('/explore_heroku/')
-@app.route('/explore_heroku/<ind>')
-def explore_heroku(ind=0):
-    return render_template('explore_heroku.html')
