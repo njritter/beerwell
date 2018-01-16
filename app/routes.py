@@ -13,7 +13,6 @@ import plotly.graph_objs as go
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'username': 'Drazi'}
     posts = [
     {
         'author': {'username': 'Drazi'},
@@ -75,10 +74,10 @@ def user(username):
 def about():
     return render_template('about.html')
 
-@app.route('/recommendations')
+@app.route('/recommend')
 @login_required
-def recommendations():
-    return render_template('recommendations.html')
+def recommend():
+    return render_template('recommend.html')
 
 @app.route('/explore/')
 @app.route('/explore/<ind>')
