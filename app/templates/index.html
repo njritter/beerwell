@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+
+<!-- Header -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Welcome to BeerWell!</h1>
+      <h3><a href="{{ url_for('explore') }}">Explore</a> the top 250 beers from BeerAdvocate.com<h3>
+      <h3>Continue your <a href="{{ url_for('quest') }}">Quest</a></b> to find the perfect beer</h3>
+      <!-- Find out more About this project -->
+      <!-- Data science behind BeerWell ... blog -->
+    </div>
+  </div>
+
 {% endblock %}

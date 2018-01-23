@@ -74,10 +74,10 @@ def user(username):
 def about():
     return render_template('about.html')
 
-@app.route('/recommend')
+@app.route('/quest')
 @login_required
-def recommend():
-    return render_template('recommend.html')
+def quest():
+    return render_template('quest.html')
 
 @app.route('/explore/')
 @app.route('/explore/<ind>')
