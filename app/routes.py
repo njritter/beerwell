@@ -74,7 +74,7 @@ def user(username):
 def about():
     return render_template('about.html')
 
-@app.route('/quest')
+@app.route('/quest/')
 @login_required
 def quest():
     return render_template('quest.html')

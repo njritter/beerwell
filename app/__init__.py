@@ -11,5 +11,8 @@ bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
+# Give Flask-Login name of login view for redirecting not logged in users
+# to the login form on pages with @login_required
+login.login_view = 'login'
 
 from app import routes, models # routes needs to import 'app' variable
