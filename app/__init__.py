@@ -1,3 +1,5 @@
+# App settings and initialization.
+
 from flask import Flask
 from config import Config
 from flask_bootstrap import Bootstrap

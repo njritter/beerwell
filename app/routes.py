@@ -77,7 +77,14 @@ def about():
 @app.route('/quest/')
 @login_required
 def quest():
-    return render_template('quest.html')
+    #This tripped me up for a bit ... need absolute paths for Heroku
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    myPath = os.path.join(basedir, 'static/data/beerpanda.pkd')
+    panda = pd.read_pickle(myPath)
+    beers = zip(list(range(250)), panda['Name'].tolist())
+
+    return render_template('quest.html',
+                        beers=beers)
 
 @app.route('/explore/')
 @app.route('/explore/<ind>')

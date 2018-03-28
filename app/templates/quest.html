@@ -5,13 +5,30 @@
 <!-- Header -->
   <div class="jumbotron">
     <div class="container">
-      <h1>Welcome back, {{ current_user.username }}!</h1>
+      <h3>Welcome back, {{ current_user.username }}!</h3>
       <!-- Find out more About this project -->
       <!-- Data science behind BeerWell ... blog -->
     </div>
   </div>
 
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Beer</th>
+        <th scope="col">Rating</th>
+      <tr>
+    </thead>
+    <tbody>
+      {% for i,b in beers %}
+      <tr>
+        <th scope="row">{{ i }}</th>
+        <td>{{ b }}</td>
+        <td> </td>
+      </tr>
+      {% endfor %}
 
-<h1>Hi, {{ current_user.username }}!</h1>
+    </tbody>
+  </table>
 
 {% endblock %}
